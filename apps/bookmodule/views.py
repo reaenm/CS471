@@ -31,9 +31,21 @@ def viewbook(request, bookId):
     context = {'book': targetBook}
     return render(request, 'bookmodule/show.html', context)
 
-# New view functions for Task 4
-def list_books(request):
-    return render(request, 'bookmodule/list_books.html')
+# Missing view functions
+def links(request):
+    return render(request, 'bookmodule/links.html')  # Use the links.html template
+
+def formatting(request):
+    return render(request, 'bookmodule/formatting.html')  # Use the formatting.html template
+
+def listing(request):
+    return render(request, 'bookmodule/listing.html')  # Use the listing.html template
+
+def tables(request):
+    return render(request, 'bookmodule/tables.html')  # Use the tables.html template
 
 def aboutus(request):
-    return render(request, 'bookmodule/aboutus.html')
+    return render(request, 'bookmodule/aboutus.html')  # Use the aboutus.html template
+
+def list_books(request):
+    return render(request, 'bookmodule/list_books.html')  # Use the list_books.html template

@@ -1,20 +1,47 @@
-/* Add a black background color to the top navigation */
-.topnav {
-    background-color: #eeeeee;
-    width: 100%;
-  }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    color: #000000;
-    text-align: center;
-    margin-right: 25px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    color: #008CBA;
-  }
-  
+/* CSS for the Links Page */
+
+/* Link1 style */
+#link1 {
+  background-color: #dfffd8; /* Light green */
+  text-align: center;
+  padding: 10px;
+  display: block;
+}
+
+#link1 a {
+  color: red;
+  text-decoration: none;
+}
+
+/* Link2 style */
+#link2 {
+  background-color: #555555; /* Dark gray */
+  text-align: center;
+  padding: 10px;
+  display: block;
+}
+
+#link2 a {
+  color: gold;
+  text-decoration: none;
+}
+
+/* Link3 style */
+#link3 {
+  background-color: #000000; /* Black */
+  text-align: center;
+  padding: 10px;
+  display: block;
+}
+
+#link3 a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Footer style */
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}

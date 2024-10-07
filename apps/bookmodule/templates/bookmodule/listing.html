@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{% load static %}  <!-- Load static tag at the beginning -->
+<head>
+    <title>The Best Features of the Internet</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="topnav">
+        <a href="{% url 'books.index' %}">Home</a>
+        <a href="{% url 'books.list_books' %}">List Books</a>
+        <a href="{% url 'books.aboutus' %}">About</a>
+    </div>
+
+    <h1>The Best Features of the Internet</h1>
+    <ul>
+        <li>You can meet new people from countries around the world.</li>
+        <li>You have access to new media as it becomes public:
+            <ul>
+                <li>New games</li>
+                <li>New applications
+                    <ul>
+                        <li>For business</li>
+                        <li>For pleasure</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Search engines</li>
+        <li>Shopping</li>
+        <li>Programming
+            <ol>
+                <li>XML</li>
+                <li>Java</li>
+                <li>HTML5</li>
+                <li>JavaScript</li>
+            </ol>
+        </li>
+        <li>Links</li>
+        <li>Keeping in touch with old friends</li>
+        <li>It's the technology of the future!</li>
+    </ul>
+
+</body>
+</html>
