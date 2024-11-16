@@ -49,3 +49,27 @@ def aboutus(request):
 
 def list_books(request):
     return render(request, 'bookmodule/list_books.html')  # Use the list_books.html template
+
+def search_books(request):
+    if request.method == "POST":
+        keyword = request.POST.get('keyword', '').lower()
+        search_title = 'option1' in request.POST
+        search_author = 'option2' in request.POST
+
+        # Example list of books (replace with database queries if needed)
+        books = [
+            {'id': 1, 'title': 'Django Unleashed', 'author': 'Andrew Pinkham'},
+            {'id': 2, 'title': 'Two Scoops of Django', 'author': 'Audrey Roy'},
+            {'id': 3, 'title': 'Python Crash Course', 'author': 'Eric Matthes'},
+        ]
+
+        # Filter books based on the search criteria
+        results = []
+        for book in books:
+            if (search_title and keyword in book['title'].lower()) or \
+               (search_author and keyword in book['author'].lower()):
+                results.append(book)
+
+        return render(request, 'bookmodule/bookList.html', {'books': results})
+
+    return render(request, 'bookmodule/search.html')
