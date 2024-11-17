@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Books with "and" in the Title</h1>
+{% if books %}
+    <ul>
+    {% for book in books %}
+        <li>ID: {{ book.id }} | Title: {{ book.title }} | Author: {{ book.author }} | Price: {{ book.price }} | Edition: {{ book.edition }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books found with "and" in the title.</p>
+{% endif %}
+{% endblock content %}

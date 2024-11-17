@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse  # Keep this for index2 function
+from .models import Book
 
 # Existing view for the index page
 def index(request):
@@ -73,3 +74,20 @@ def search_books(request):
         return render(request, 'bookmodule/bookList.html', {'books': results})
 
     return render(request, 'bookmodule/search.html')
+def simple_query(request):
+    # Query to find books with 'and' in their title (case-insensitive)
+    books = Book.objects.filter(title__icontains='and')
+    return render(request, 'bookmodule/simple_query.html', {'books': books})
+
+def complex_query(request):
+    # Query for books matching the conditions
+    books = Book.objects.filter(
+        author__isnull=False,       # Author name is not null
+        title__icontains='and',    # Title contains 'and'
+        edition__gte=2             # Edition is greater than or equal to 2
+    ).exclude(
+        price__lte=100             # Exclude books with price <= 100
+    )[:10]                         # Limit results to 10 books
+
+    # Render the results in a template
+    return render(request, 'bookmodule/complex_query.html', {'books': books})

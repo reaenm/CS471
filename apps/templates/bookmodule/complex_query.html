@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Complex Query Results</h1>
+{% if books %}
+    <ul>
+    {% for book in books %}
+        <li>ID: {{ book.id }} | Title: {{ book.title }} | Author: {{ book.author }} | Price: {{ book.price }} | Edition: {{ book.edition }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books matched the query conditions.</p>
+{% endif %}
+{% endblock content %}
