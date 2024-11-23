@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Students and Their Addresses</h1>
+{% if students %}
+    <ul>
+    {% for student in students %}
+        <li>
+            Name: {{ student.name }} | Age: {{ student.age }} | City: {{ student.address.city }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No students found.</p>
+{% endif %}
+{% endblock content %}

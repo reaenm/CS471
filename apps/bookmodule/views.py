@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse  # Keep this for index2 function
 from .models import Book
+from django.db.models import Q
+from django.db.models import Avg, Max, Min, Sum, Count
+from .models import Student, Address
+from django.db.models import Count
+
 
 # Existing view for the index page
 def index(request):
@@ -91,3 +96,47 @@ def complex_query(request):
 
     # Render the results in a template
     return render(request, 'bookmodule/complex_query.html', {'books': books})
+
+def task1(request):
+    # Use Q operator to filter books with price <= 50
+    books = Book.objects.filter(price__lte=50)
+    return render(request, 'bookmodule/task1.html', {'books': books})
+
+def task2(request):
+    # Use Q operator for complex queries
+    books = Book.objects.filter(
+        Q(price__gte=100) | Q(edition=3),  # Price >= 100 OR Edition = 3
+        author__isnull=False               # Author is not null
+    )
+    return render(request, 'bookmodule/task2.html', {'books': books})
+
+def task3(request):
+    # Order books by price (ascending)
+    books = Book.objects.order_by('price')  # Use '-price' for descending order
+    return render(request, 'bookmodule/task3.html', {'books': books})
+
+def task4(request):
+    # Order books by title
+    books = Book.objects.order_by('title')  # Ascending order
+    return render(request, 'bookmodule/task4.html', {'books': books})
+
+def task5(request):
+    # Perform aggregation on the Book model
+    stats = Book.objects.aggregate(
+        total_books=Count('id'),        # Total number of books
+        total_price=Sum('price'),       # Total price of all books
+        avg_price=Avg('price'),         # Average price
+        max_price=Max('price'),         # Maximum price
+        min_price=Min('price')          # Minimum price
+    )
+    return render(request, 'bookmodule/task5.html', {'stats': stats})
+
+def task6(request):
+    students = Student.objects.all()
+    return render(request, 'bookmodule/task6.html', {'students': students})
+
+
+def task7(request):
+    # Aggregate the number of students for each city
+    students_per_city = Address.objects.annotate(student_count=Count('students'))
+    return render(request, 'bookmodule/task7.html', {'students_per_city': students_per_city})

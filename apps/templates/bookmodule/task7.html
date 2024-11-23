@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Number of Students in Each City</h1>
+{% if students_per_city %}
+    <ul>
+    {% for address in students_per_city %}
+        <li>City: {{ address.city }} | Number of Students: {{ address.student_count }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No data available.</p>
+{% endif %}
+{% endblock content %}

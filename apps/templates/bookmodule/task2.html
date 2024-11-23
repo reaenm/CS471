@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Books with Price >= 100 or Edition = 3 (Author Not Null)</h1>
+{% if books %}
+    <ul>
+    {% for book in books %}
+        <li>Title: {{ book.title }} | Author: {{ book.author }} | Price: {{ book.price }} | Edition: {{ book.edition }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books matched the conditions.</p>
+{% endif %}
+{% endblock content %}
